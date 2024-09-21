@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Domain.Enums;
 
 namespace Application.UseCases.Word.RequestsDto
@@ -12,9 +13,11 @@ namespace Application.UseCases.Word.RequestsDto
 
         [Required(ErrorMessage = "This is expected")]
         [EnumDataType(typeof(TypeExpression), ErrorMessage = "Must be in range...")]
-        public TypeExpression Type_Expression { get; set; }
+        [JsonConverter(typeof(TypeExpression))]
+        public required TypeExpression Type_Expression { get; set; }
 
         [EnumDataType(typeof(KindWord), ErrorMessage = "Must be in range")]
+        [JsonConverter(typeof(KindWord))]
         public KindWord? Kind_Word { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be positive")]

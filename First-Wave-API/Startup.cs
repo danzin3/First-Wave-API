@@ -1,5 +1,7 @@
-﻿using First_Wave_API.Configs;
-using Microsoft.AspNetCore.CookiePolicy;
+﻿using Microsoft.AspNetCore.CookiePolicy;
+using First_Wave_API.Configs;
+using First_Wave_API.Middlewares;
+
 
 namespace First_Wave_API
 {
@@ -24,6 +26,8 @@ namespace First_Wave_API
 
             services.ConfigCoorsStartup(EnvVar);
 
+            services.ConfigApiVersionStartup();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.Secure = CookieSecurePolicy.Always;
@@ -37,7 +41,7 @@ namespace First_Wave_API
 
             services.AddHttpContextAccessor();
 
-            services.AddSwaggerGen();
+            services.ConfigSwaggerStartup();
 
             //RegisterServices(services);
         }
