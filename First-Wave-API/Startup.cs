@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.CookiePolicy;
 using First_Wave_API.Configs;
 using First_Wave_API.Middlewares;
+using System.Text.Json.Serialization;
 
 
 namespace First_Wave_API
@@ -35,7 +36,11 @@ namespace First_Wave_API
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(opt =>
+                {
+                    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
 
             services.AddEndpointsApiExplorer();
 

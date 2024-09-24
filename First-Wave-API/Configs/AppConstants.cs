@@ -2,8 +2,8 @@
 {
     public static class AppConstants
     {
-        public const string WordsPrefixUrl = "api/{version?}/word";
-        public const string TagsPrefixUrl = "api/{version?}/tag";
-        public const string UsersPrefixUrl = "api/{version?}/user";
+        public const string WordsPrefixUrl = "api/{version}/words";
+        public const string TagsPrefixUrl = "api/{version}/tags";
+        public const string UsersPrefixUrl = "api/{version}/users";
     }
 }

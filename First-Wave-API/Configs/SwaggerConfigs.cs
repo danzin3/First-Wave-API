@@ -18,6 +18,7 @@ namespace First_Wave_API.Configs
                     Title = "First Wave API",
                     Version = "v2"
                 });
+                opt.EnableAnnotations();
                 opt.OperationFilter<DefaultSwaggerVersion>();
             });
         }
