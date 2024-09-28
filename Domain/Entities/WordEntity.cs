@@ -3,11 +3,11 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class WordEntity(string _Tittle, TypeExpression _Type_Expression, Guid _Word_Guid) : MainEntity
+    public class WordEntity(string _Tittle, TypeExpression _Type_Expression) : MainEntity
     {
-        public string Tittle { get; set; } = _Tittle;
+        public string Title { get; set; } = _Tittle;
         public TypeExpression Type_Expression { get; set; } = _Type_Expression;
-        public Guid Word_Guid { get; set; } = _Word_Guid == Guid.Empty ? Guid.NewGuid() : _Word_Guid;
+        public Guid? WordGuid { get; set; }
         public KindWord? Kind_Word { get; set; }
         public int? CountSearched {  get; set; }
         public string? Translation { get; set; }

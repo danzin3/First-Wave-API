@@ -11,7 +11,7 @@ namespace Application.UseCases.Word.RequestsDto
         [StringLength(255, MinimumLength = 2, ErrorMessage = "First Name must be between 2 and 255 characters.")]
         [RegularExpression(@"^[a-zA-Z0-9\s]+$", ErrorMessage = "Não pode ter char especial")]
         [DefaultValue("Some Word")]
-        public required string Tittle {  get; set; }
+        public required string Title {  get; set; }
 
         [Required(ErrorMessage = "This is expected")]
         [EnumDataType(typeof(TypeExpression), ErrorMessage = "Must be in range...")]
@@ -22,18 +22,22 @@ namespace Application.UseCases.Word.RequestsDto
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be positive")]
         [DefaultValue(1)]
+        [SwaggerSchema(Title = "How many times the word was searched", Nullable = true)]
         public int? CountSearched { get; set; }
 
         [StringLength(255, MinimumLength = 2, ErrorMessage = "Translation be between 2 and 255 characters.")]
-        [SwaggerSchema(Nullable = true)]
+        [SwaggerSchema(Title = "", Nullable = true)]
         public string? Translation { get; set; }
 
-        [SwaggerSchema(Nullable = true)]
+        [SwaggerSchema(Title = "Flag to control the word visibility", Nullable = true)]
         public bool? Visibility { get; set; } = true;
 
         [StringLength(1024, MinimumLength = 2, ErrorMessage = "First Name must be between 2 and 1024 characters.")]
-        [DefaultValue("Some optional description about the word")]
-        [SwaggerSchema(Nullable = true)]
+        [DefaultValue("")]
+        [SwaggerSchema(Title= "Some optional extra description about the word", Nullable = true)]
         public string? Comments { get; set; }
+
+        [SwaggerSchema(Description = "An extra field that can be used in the future", Format = "date-time", Nullable = true)]
+        public DateTime? NextShowed {  get; set; }
     }
 }

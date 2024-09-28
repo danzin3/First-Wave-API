@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.CookiePolicy;
+using System.Text.Json.Serialization;
 using First_Wave_API.Configs;
 using First_Wave_API.Middlewares;
-using System.Text.Json.Serialization;
-
+using Infra.IoC;
 
 namespace First_Wave_API
 {
@@ -48,7 +48,7 @@ namespace First_Wave_API
 
             services.ConfigSwaggerStartup();
 
-            //RegisterServices(services);
+            RegisterServices(services);
         }
 
         /**
@@ -61,7 +61,7 @@ namespace First_Wave_API
 
         private static void RegisterServices(IServiceCollection services)
         {
-            //Chamar a função de injeção de dependências da camada de IoC
+            services.AddApplicationServices();
         }
     }
 }
